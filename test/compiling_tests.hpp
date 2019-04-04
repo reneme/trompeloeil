@@ -324,12 +324,21 @@ public:
   using mptr_d = int U::*;
   MAKE_MOCK1(func_streamref, void(std::ostream&));
   MAKE_MOCK1(func_u, void(const uncomparable&));
+
   MAKE_MOCK1(func_v, void(int));
   MAKE_MOCK1(func_cv, void(const int));
   MAKE_MOCK1(func_lr, void(int&));
   MAKE_MOCK1(func_clr, void(const int&));
   MAKE_MOCK1(func_rr, void(int&&));
   MAKE_MOCK1(func_crr, void(const int&&));
+
+  MAKE_MOCK1(func_vt, void(std::tuple<int>));
+  MAKE_MOCK1(func_cvt, void(const std::tuple<int>));
+  MAKE_MOCK1(func_lrt, void(std::tuple<int>&));
+  MAKE_MOCK1(func_clrt, void(const std::tuple<int>&)); //
+  MAKE_MOCK1(func_rrt, void(std::tuple<int>&&));       //
+  MAKE_MOCK1(func_crrt, void(const std::tuple<int>&&));//
+
   MAKE_MOCK1(func_uniqv, void(std::unique_ptr<int>));
   MAKE_MOCK1(func_sharedv, void(std::shared_ptr<int>));
   MAKE_MOCK1(func, void(int&));

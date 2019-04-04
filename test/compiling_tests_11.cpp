@@ -1223,7 +1223,86 @@ TEST_CASE_METHOD(
   }
   REQUIRE(reports.empty());
 }
+#if 0
+TEST_CASE_METHOD(
+  Fixture,
+  "C++11: wildcard matches single type tuple by value",
+  "[C++11][C++14][matching]")
+{
+  {
+    U u;
+    REQUIRE_CALL_V(u, func_vt(_));
+    u.func_vt(std::make_tuple(1));
+  }
+  REQUIRE(reports.empty());
+}
 
+TEST_CASE_METHOD(
+  Fixture,
+  "C++11: wildcard matches single type tuple by const value",
+  "[C++11][C++14][matching]")
+{
+  {
+    U u;
+    REQUIRE_CALL_V(u, func_cvt(_));
+    u.func_cvt(std::make_tuple(1));
+  }
+  REQUIRE(reports.empty());
+}
+#endif
+TEST_CASE_METHOD(
+  Fixture,
+  "C++11: wildcard matches single type tuple by const&",
+  "[C++11][C++14][matching]")
+{
+  {
+    U u;
+    REQUIRE_CALL_V(u, func_clrt(_));
+    u.func_clrt(std::make_tuple(1));
+  }
+  REQUIRE(reports.empty());
+}
+
+TEST_CASE_METHOD(
+  Fixture,
+  "C++11: wildcard matches single type tuple by &",
+  "[C++11][C++14][matching]")
+{
+  {
+    U u;
+    REQUIRE_CALL_V(u, func_lrt(_));
+    std::tuple<int> t(1);
+    u.func_lrt(t);
+  }
+  REQUIRE(reports.empty());
+}
+#if 0
+TEST_CASE_METHOD(
+  Fixture,
+  "C++11: wildcard matches single type tuple by &&",
+  "[C++11][C++14][matching]")
+{
+  {
+    U u;
+    REQUIRE_CALL_V(u, func_rrt(_));
+    u.func_rrt(std::make_tuple(1));
+  }
+  REQUIRE(reports.empty());
+}
+
+TEST_CASE_METHOD(
+  Fixture,
+  "C++11: wildcard matches single type tuple by const &&",
+  "[C++11][C++14][matching]")
+{
+  {
+    U u;
+    REQUIRE_CALL_V(u, func_crrt(_));
+    u.func_crrt(std::make_tuple(1));
+  }
+  REQUIRE(reports.empty());
+}
+#endif
 #if TROMPELOEIL_TEST_RVALUE_REFERENCE_FAILURES
 
 TEST_CASE_METHOD(
