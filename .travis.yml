@@ -359,7 +359,7 @@ matrix:
       osx_image: xcode12
       compiler: clang
       env:
-        - COMPILER="clang++" SANITIZE=false CONAN_COMPILER=apple-clang CC_VERSION=12.0 CC_LIBCXX=libc++
+        - COMPILER="clang++" SANITIZE=false
 
     - os: osx
       language: c++
